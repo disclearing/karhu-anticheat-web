@@ -2,7 +2,7 @@
 
 .wrapper {
     padding: 5rem 0;
-    background-color: #f9f9f9;
+    background-color: var(--bg-secondary);
 }
 
 .container {
@@ -18,7 +18,7 @@
 
     p {
         margin-top: 0;
-        color: #495057;
+        color: var(--text-main);
     }
 
     > p {
@@ -57,7 +57,7 @@
 .gridItem {
     padding: 30px;
     border-radius: var(--border-radius);
-    background-color: #fff;
+    background-color: var(--bg-main);
     box-shadow: 0 3px 3px 3px rgb(128 128 128 / 5%);
     transition: transform 0.3s ease-in-out;
 
@@ -79,7 +79,7 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: #1f6aac;
+        background: var(--highlight-main);
         color: white;
         font-size: 2.5rem;
     }

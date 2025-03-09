@@ -18,7 +18,7 @@
     align-items: center;
     padding: 20px;
     border-radius: 8px;
-    background-color: #ececec;
+    background-color: var(--bg-secondary);
 
     @media (max-width: 1200px) {
         flex-direction: column;
@@ -40,6 +40,6 @@
         padding: 20px 40px;
         border-radius: var(--border-radius);
         background-color: var(--highlight-main);
-        color: #fff;
+        color: var(--text-secondary);
     }
 }

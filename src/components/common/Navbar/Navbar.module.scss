@@ -10,6 +10,14 @@
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     z-index: 1000;
+    align-items: center;
+    background-color: var(--bg-main);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
 }
 
 .container {
@@ -32,51 +40,61 @@
         color: var(--text-main);
         font-weight: 500;
         padding: 0.5rem 1rem;
-        transition: color 0.2s ease;
+        transition: color 0.1s ease-in-out;
 
-        &:after {
+        &::after {
+            background-color: var(--highlight-main);
+            bottom: -5px;
             content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 1rem;
-            right: 1rem;
             height: 2px;
-            background: currentColor;
-            transform: scaleX(0);
-            transition: transform 0.2s ease;
-            opacity: 0.3;
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            transition: all 0.2s ease-in-out;
+            width: 100%;
         }
 
         &:hover {
-            text-decoration: none;
             color: var(--highlight-main);
 
-            &:after {
-                transform: scaleX(1);
+            &::after {
+                opacity: 1;
             }
         }
     }
 }
 
-.buttons > a {
-    display: flex;
-    gap: 8px;
+.buttons {
     align-items: center;
-    height: 2.5rem;
-    padding: 0 1.5rem;
-    border-radius: 50px;
-    background-color: var(--highlight-main);
-    color: var(--text-secondary);
-    font-weight: 600;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    display: flex;
 
-    &:hover {
-        transform: translateY(-2px);
-        filter: brightness(1.1);
+    a {
+        align-items: center;
+        background: linear-gradient(
+            52deg,
+            var(--highlight-main) 3%,
+            #22b8cf 97%
+        );
+        border-radius: var(--border-radius);
+        color: var(--text-secondary);
+        display: flex;
+        font-weight: 500;
+        gap: 5px;
+        padding: 0.5em 1em;
+        transition: filter 0.15s ease-in-out;
+
+        &:hover {
+            filter: brightness(90%);
+        }
+
+        svg {
+            font-size: 1.2rem;
+        }
     }
 }
 
 .langBtn {
+    margin-right: 15px;
     position: relative;
     z-index: 10;
     display: flex;
@@ -101,8 +119,20 @@
     }
 
     > span {
-        display: flex;
         align-items: center;
+        cursor: pointer;
+        display: flex;
+        gap: 2px;
+
+        p {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        svg {
+            color: var(--text-main);
+            font-size: 1.5rem;
+        }
     }
 }
 
@@ -153,11 +183,14 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: #f9f9f9;
+    background-color: var(--bg-secondary);
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 20px 40px rgb(0 0 0 / 20%);
     backdrop-filter: blur(8px);
     background: rgba(255, 255, 255, 0.98);
     transition: transform 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1em;
 
     &.mobileOpen {
         transform: translateY(0);
@@ -170,11 +203,15 @@
     button {
         width: 100%;
         padding: 1.2rem 0;
-        background-color: var(--highlight-main);
-        color: var(--text-secondary);
+        background: linear-gradient(
+            52deg,
+            var(--highlight-main) 3%,
+            #22b8cf 97%
+        );
+        color: white;
         font-size: 1rem;
         cursor: pointer;
-        border-radius: 50px;
+        border-radius: var(--border-radius);
         margin: 1rem 2rem;
         width: calc(100% - 4rem);
         transition: transform 0.2s ease;
@@ -222,12 +259,16 @@
     width: 8rem;
     padding: 10px;
     border-radius: var(--border-radius);
-    background-color: #fff;
+    background-color: var(--bg-secondary);
     color: var(--text-main);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(0, 0, 0, 0.08);
+    max-width: 0;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    z-index: 120;
 
     span {
         padding: 0.5rem 0;
@@ -237,14 +278,38 @@
         font-weight: 500;
         text-align: center;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.1s ease-in-out;
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.02);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        &.active {
+            background-color: rgba(0, 0, 0, 0.1);
+            font-weight: 500;
         }
     }
+}
 
-    .active {
-        background-color: rgba(0, 0, 0, 0.03);
+.themeBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: scale(1.1);
     }
+    
+    svg {
+        color: var(--text-main);
+    }
+}
+
+.scrolled {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.7em 0;
 }

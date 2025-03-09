@@ -6,6 +6,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { FaDiscord } from 'react-icons/fa'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import LanguageContext from '../../../context/LanguageContext'
+import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import styles from './Navbar.module.scss'
 
 const Navbar = () => {
@@ -93,6 +94,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className={`${styles.buttons} ${styles.desktop}`}>
+                    <ThemeToggle />
                     <LangBtn />
                     <Link href="https://discord.gg/cMY4xKRrW4" passHref>
                         <a target="_blank">
@@ -102,6 +104,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <span className={styles.mobile}>
+                    <ThemeToggle />
                     <LangBtn />
                     <span
                         onClick={() => {

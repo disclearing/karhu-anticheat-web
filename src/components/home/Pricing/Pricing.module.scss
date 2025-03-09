@@ -2,7 +2,7 @@
 
 .wrapper {
     padding: 5rem 0;
-    background-color: #f9f9f9;
+    background-color: var(--bg-secondary);
     width: 100vw;
     position: relative;
     left: 50%;
@@ -38,7 +38,7 @@
 
     h2 {
         margin: 0;
-        color: #fff;
+        color: var(--text-secondary);
         font-weight: 400;
         font-size: 2rem;
     }
@@ -132,7 +132,7 @@
     height: 100%;
     padding: 20px;
     border-radius: var(--border-radius);
-    background-color: #ececec;
+    background-color: var(--bg-main);
     transition: transform 0.15s ease-in-out;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
