@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import en from '../../languages/en'
 import fi from '../../languages/fi'
+import es from '../../languages/es'
 import LanguageContext from '../context/LanguageContext'
 import '../styles/_global.scss'
 
@@ -15,6 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             break
         case 'fi':
             t = fi
+            break
+        case 'es':
+            t = es
             break
         default:
             t = en

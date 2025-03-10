@@ -19,6 +19,7 @@ const Navbar = () => {
     const supportedLanguages = [
         { locale: 'en', name: 'English' },
         { locale: 'fi', name: 'Suomi' },
+        { locale: 'es', name: 'Español' },
     ]
 
     const handleLangChange = (locale: string) => {
