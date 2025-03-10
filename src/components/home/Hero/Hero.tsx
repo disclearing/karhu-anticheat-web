@@ -1,12 +1,42 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import LanguageContext from '../../../context/LanguageContext'
 import styles from './Hero.module.scss'
 
 const Hero = () => {
     const { t } = useContext(LanguageContext)
     const router = useRouter()
+    const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+    // Detect the current theme
+    useEffect(() => {
+        // Initial theme detection
+        const detectTheme = () => {
+            const dataTheme = document.documentElement.getAttribute('data-theme')
+            setTheme(dataTheme === 'dark' ? 'dark' : 'light')
+        }
+
+        // Detect initial theme
+        detectTheme()
+
+        // Set up a mutation observer to detect theme changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (
+                    mutation.type === 'attributes' &&
+                    mutation.attributeName === 'data-theme'
+                ) {
+                    detectTheme()
+                }
+            })
+        })
+
+        observer.observe(document.documentElement, { attributes: true })
+
+        // Clean up the observer on component unmount
+        return () => observer.disconnect()
+    }, [])
 
     return (
         <section className={styles.container}>
@@ -44,7 +74,7 @@ const Hero = () => {
             <div className={styles.imgContainer}>
                 <Image
                     priority
-                    src="/hero.svg"
+                    src={theme === 'dark' ? '/hero-dark.svg' : '/hero.svg'}
                     alt="Hero illustration"
                     objectFit="contain"
                     layout="fill"
