@@ -15,7 +15,7 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    padding: 1em 0;
+    padding: 0;
     transition: all 0.2s ease-in-out;
     width: 100%;
 }
@@ -25,12 +25,15 @@
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 100%;
+    padding: 0 1rem;
 
     > div {
         display: flex;
         gap: 20px;
         align-items: center;
+        height: 100%;
     }
 }
 
@@ -67,6 +70,7 @@
 .buttons {
     align-items: center;
     display: flex;
+    height: 100%;
 
     a {
         align-items: center;
@@ -82,6 +86,7 @@
         gap: 5px;
         padding: 0.5em 1em;
         transition: filter 0.15s ease-in-out;
+        height: fit-content;
 
         &:hover {
             filter: brightness(90%);
@@ -100,8 +105,8 @@
     display: flex;
     gap: 3px;
     align-items: center;
-    height: 50%;
-    padding: 0 0.5rem;
+    justify-content: center;
+    height: 100%;
     color: var(--text-main);
     font-weight: 500;
     cursor: pointer;
@@ -120,6 +125,7 @@
 
     > span {
         align-items: center;
+        justify-content: center;
         cursor: pointer;
         display: flex;
         gap: 2px;
@@ -127,11 +133,16 @@
         p {
             color: var(--text-main);
             font-weight: 500;
+            margin: 0;
+            display: flex;
+            align-items: center;
         }
 
         svg {
             color: var(--text-main);
             font-size: 1.5rem;
+            display: flex;
+            align-items: center;
         }
     }
 }
@@ -146,13 +157,16 @@
     display: none;
     gap: 10px;
     align-items: center;
+    height: 100%;
 
     > span:last-child {
         display: flex;
         align-items: center;
+        justify-content: center;
         color: var(--text-main);
         font-size: 2rem;
         cursor: pointer;
+        height: 100%;
     }
 }
 
@@ -254,7 +268,7 @@
 
 .langMenu {
     position: absolute;
-    top: 4rem;
+    top: 3.5rem;
     right: 0;
     flex-direction: column;
     width: 8rem;
@@ -270,21 +284,25 @@
     
     &.langMenuOpen {
         max-width: 8rem;
+        display: flex;
+        gap: 5px;
     }
     
     &.langMenuClosed {
         max-width: 0;
         overflow: hidden;
+        display: none;
     }
 
     span {
-        display: block;
+        display: flex;
         padding: 0.5rem 0;
         border-radius: var(--border-radius);
         background-color: transparent;
         color: var(--text-main);
         font-weight: 500;
         text-align: center;
+        justify-content: center;
         cursor: pointer;
         transition: background-color 0.1s ease-in-out;
         white-space: nowrap;

@@ -126,13 +126,13 @@
     height: 600px;
 }
 
-.card {
+// Card shared styles mixin
+@mixin card-base {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 20px;
     border-radius: var(--border-radius);
-    background-color: var(--bg-main);
     transition: transform 0.15s ease-in-out;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -140,14 +140,19 @@
     animation-delay: calc(var(--index, 0) * 100ms);
     opacity: 0;
 
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.card {
+    @include card-base;
+    background-color: var(--bg-main);
+
     @for $i from 1 through 3 {
         &:nth-child(#{$i}) {
             --index: #{$i};
         }
-    }
-
-    &:hover {
-        transform: translateY(-5px);
     }
 }
 
@@ -204,20 +209,66 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    width: 100%;
 
     > div {
         display: flex;
         gap: 5px;
         align-items: center;
         justify-content: center;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+// Pricing button shared styles
+@mixin pricing-button {
+    width: 80%;
+    margin: 0 auto;
+    padding: 15px 0;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: block;
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.3) 0%,
+            transparent 70%
+        );
+        transform: scale(0);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+
+        &::before {
+            transform: scale(1);
+            opacity: 1;
+        }
     }
 }
 
 .premium {
-    background-color: var(--highlight-main);
-    box-shadow: 0 3px 3px 3px rgb(128 128 128 / 5%);
     background: linear-gradient(135deg, var(--highlight-main), #2980b9);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -243,95 +294,23 @@
 }
 
 .pricingLink {
-    width: 80%;
-    margin: auto;
-    padding: 15px 0;
-    border-radius: var(--border-radius);
-    background-color: #ececec;
-    transition: transform 0.15s ease-in-out;
+    @include pricing-button;
     background-color: #1f6aac;
     color: #fff;
-    font-size: 0.8rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
 
     span {
         color: #fff;
-        display: flex;
-        justify-content: center;
-    }
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-            circle,
-            rgba(255, 255, 255, 0.2) 0%,
-            transparent 60%
-        );
-        transform: scale(0);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    &:hover {
-        transform: translateY(-2px);
-
-        &::before {
-            transform: scale(1);
-            opacity: 1;
-        }
     }
 }
 
 .pricingLinkPremium {
-    width: 80%;
-    margin: auto;
-    padding: 15px 0;
-    border-radius: var(--border-radius);
-    background-color: #ececec;
-    transition: transform 0.15s ease-in-out;
-    background-color: #fff;
-    font-size: 0.8rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    @include pricing-button;
+    background-color: var(--highlight-main);
+    color: var(--text-secondary);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 
     span {
-        color: var(--text-main);
-        display: flex;
-        justify-content: center;
-    }
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-            circle,
-            rgba(255, 255, 255, 0.2) 0%,
-            transparent 60%
-        );
-        transform: scale(0);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    &:hover {
-        transform: translateY(-2px);
-
-        &::before {
-            transform: scale(1);
-            opacity: 1;
-        }
+        color: var(--text-secondary);
     }
 }
 

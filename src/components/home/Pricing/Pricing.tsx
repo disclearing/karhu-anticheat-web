@@ -51,7 +51,7 @@ const Pricing = () => {
                                                 key={index}
                                             >
                                                 <span>
-                                                    <IoIosCheckmark />
+                                                    <IoIosCheckmark aria-hidden="true" />
                                                     <p>{feature}</p>
                                                 </span>
                                             </div>
@@ -64,13 +64,14 @@ const Pricing = () => {
                                     <Link href="/features">
                                         {t.home_pricing.card_plan_view_features}
                                     </Link>
-                                    <AiOutlineArrowRight />
+                                    <AiOutlineArrowRight aria-hidden="true" />
                                 </div>
                                 <a
                                     className={styles.pricingLink}
-                                    href={
-                                        'https://buy.stripe.com/5kA3g9bOA8aPe6k288'
-                                    }
+                                    href="https://buy.stripe.com/5kA3g9bOA8aPe6k288"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={t.home_pricing.card2.desc_purchase}
                                 >
                                     <span>
                                         {t.home_pricing.card2.desc_purchase}
@@ -87,7 +88,7 @@ const Pricing = () => {
                             <br />
                             {t.home_pricing.card_looking_download_end}
                             <Link href="https://discord.gg/cMY4xKRrW4" passHref>
-                                <a target="_blank"> Discord-server</a>
+                                <a target="_blank" rel="noopener noreferrer"> Discord-server</a>
                             </Link>
                             !
                         </p>
@@ -111,7 +112,7 @@ const Pricing = () => {
                                                 key={index}
                                             >
                                                 <span>
-                                                    <IoIosCheckmark />
+                                                    <IoIosCheckmark aria-hidden="true" />
                                                     <p>{feature}</p>
                                                 </span>
                                             </div>
@@ -124,11 +125,14 @@ const Pricing = () => {
                                     <Link href="/features">
                                         {t.home_pricing.card_plan_view_features}
                                     </Link>
-                                    <AiOutlineArrowRight />
+                                    <AiOutlineArrowRight aria-hidden="true" />
                                 </div>
                                 <a
                                     className={styles.pricingLinkPremium}
                                     href="https://buy.stripe.com/eVa2c5cSEdv92nCaEF"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={t.home_pricing.card3.desc_purchase}
                                 >
                                     <span>
                                         {t.home_pricing.card3.desc_purchase}
